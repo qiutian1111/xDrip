@@ -207,21 +207,6 @@ android {
             exclude group: 'commons-logging', module: 'commons-logging'
             exclude group: 'org.apache.httpcomponents'
         }
-        signingConfigs {
-        release {
-            storeFile file(getStoreFile())
-            storePassword getStorePassword()
-            keyAlias getKeyAlias()
-            keyPassword getKeyPassword()
-        }
-    }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-
-    }
     }
 
 
@@ -306,7 +291,21 @@ android {
             // Otherwise, all variants use the "dev" flavor configurations.
         }
     }
+        signingConfigs {
+        release {
+            storeFile file(getStoreFile())
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+    }
 
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+
+    }
 }
 
 dependencies {
