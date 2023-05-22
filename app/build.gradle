@@ -234,13 +234,23 @@ android {
     dataBinding {
         enabled = true
     }
-
+    
+    signingConfigs {
+       release {
+            storeFile file(getStoreFile())
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+    }
+    
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+        signingConfig signingConfigs.release
+           // minifyEnabled true
+           //shrinkResources true
+           // proguardFiles getDefaultProguardFile('proguard-android.txt'),
+           //         'proguard-rules.pro'
         }
         debug {
             minifyEnabled true
@@ -290,21 +300,6 @@ android {
             // the defaultConfig block instead. You still need to create this flavor.
             // Otherwise, all variants use the "dev" flavor configurations.
         }
-    }
-        signingConfigs {
-        release {
-            storeFile file(getStoreFile())
-            storePassword getStorePassword()
-            keyAlias getKeyAlias()
-            keyPassword getKeyPassword()
-        }
-    }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-
     }
 }
 
