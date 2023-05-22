@@ -32,5 +32,5 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: aaps
+        name: xdrip
         path: app/build/outputs/apk/full/release
